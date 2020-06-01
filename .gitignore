@@ -1,0 +1,13 @@
+#Ignore visual studio project stuff
+*.sln
+*.vcxproj
+*.filters
+*.user
+*.exe
+*.vs
+*.CT
+*.PTR*
+Debug/
+*.html
+node_modules/
+*.json
