@@ -6,17 +6,15 @@ const popupContainer = document.getElementById('popup-container')
 
 //Get user to enter their name and add them to the user list
 const name = prompt("Enter a name")
-appendMessage("You joined")
 socket.emit('new-user', name)
 
 //Inform other users that new user has joined
-socket.on('user-connected', name => {
-	appendMessage(`${name} joined`)
-})
+//socket.on('user-connected', name => {
+//	appendMessage(`${name} joined`)
+//})
 
 socket.on('chat-message', data => {
-	//appendMessage(`${data.name}: ${data.message}`)
-	appendMessage(`${data.name}: ${data.message}`)
+	appendMessage(`${data.name}:\n${data.message}`, data.name)
 })
 
 //listens for when the user clicks the submit button
@@ -32,11 +30,20 @@ messageForm.addEventListener('submit', e=> {
 	}
 })
 
-//Add recieved messages to the html of the chat
-function appendMessage(message){
+//Add recieved messages to the chat
+function appendMessage(message,sender){
 	//Create a new div
 	const messageElement = document.createElement('div')
+	if(sender == name){
+		messageElement.classList.add('myMessage')
+	}
+	else{
+		messageElement.classList.add('otherMessage')
+	}
 	//Set the text in the div to the message
 	messageElement.innerText = message
 	messageContainer.append(messageElement)
+	//scroll to the bottom when a new message is added
+	messageContainer.scrollTop = messageContainer.scrollHeight
 }
+
