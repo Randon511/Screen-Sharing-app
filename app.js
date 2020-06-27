@@ -20,6 +20,7 @@ while(name == ""){
 	name = prompt("Enter your name")
 }
 
+
 socket.emit('new-user', {name: name})
 
 //A new user has joined the room so we neer to make peer connections with all other users
