@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build" : "browserify app.js -o bundle.js",
+    "build": "browserify app.js -o bundle.js",
     "start": "node server.js"
   },
   "repository": {
@@ -22,6 +22,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "browserify": "^16.5.1",
     "nodemon": "^2.0.4"
   }
 }
