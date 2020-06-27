@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "browserifyinc app.js -o bundle.js && nodemon server.js"
+    "start": "browserify app.js -o bundle.js && nodemon server.js"
   },
   "repository": {
     "type": "git",
