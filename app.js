@@ -13,7 +13,6 @@ const video = document.getElementById('video')
 
 //keeps a reference of every peer and its socket id {peerId, peer}
 peersRef = []
-////////////////////////////////////////////////////////////////////////////////////////
 //Get user to enter their name and add them to the user list
 var name = ""
 
