@@ -1,6 +1,19 @@
-const io = require('socket.io')(8000)
-const users = {}
+const express = require('express')
+const app = express()
+const server = require('http').createServer(app)
+const io = require('socket.io').listen(server)
 
+server.listen(process.env.PORT || 8080)
+
+//Setting up webpage rendering
+app.set('view engine','ejs')
+app.set('views', './views')
+app.use(express.static('public'))
+app.get('/', (req, res) =>{
+	res.render('index')
+})
+
+var users = {}
 io.on('connection', socket => {
 	//When a new user joins:
 	//Send them a list of all other users in the room
