@@ -9,7 +9,7 @@ var messageInput = document.getElementById('message-input')
 var shareButton = document.getElementById('start-sharing-button')
 var stopButton = document.getElementById('stop-button')
 var video = document.getElementById('video')
-
+var numberOfUsers = document.getElementById('number-of-users')
 //keeps a reference of every peer and its socket id {peerId, peer}
 peersRef = []
 //Get user to enter their name and add them to the user list
