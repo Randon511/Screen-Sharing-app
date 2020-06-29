@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Screen Share</title>
+</head>
+<body>
+	<div class="viewer" id="video-container">
+		<video controls id="video" width = "100%" height = "100%" autoplay playsinline></video>
+		<button class="start-sharing" id="start-sharing-button"><i class="material-icons">screen_share</i></button>
+	</div>
+	<div class = "chat-box" id="message-container"></div>
+	<div class = "item-container">
+		<button class="controls" id="stop-button" style="display: none;"><i class="material-icons">stop</i></button>
+		<div class="connected-users"><i class="material-icons">person</i>
+			<span id="number-of-users">1</span>
+		</div>
+	</div>
+	<form class = "chat-box" id="send-container">
+		<input type="text" autocomplete="off" id="message-input">
+		<button type="submit" id="send-button"><i class="material-icons">send</i></button>
+	</form>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="bundle.js"></script>
+</body>
+</html>
