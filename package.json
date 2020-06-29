@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify public/app.js -o public/bundle.js",
-    "start": "node ./public/server.js",
-    "devStart": "browserify public/app.js -o bundle.js && nodemon server.js"
+    "start": "node ./server.js",
+    "devStart": "browserify ./public/app.js -o ./public/bundle.js && nodemon server.js"
   },
   "repository": {
     "type": "git",
