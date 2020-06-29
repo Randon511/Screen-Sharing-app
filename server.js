@@ -1,9 +1,12 @@
 const express = require('express')
 const app = express()
+const PORT = process.env.PORT || 8080
 const server = require('http').createServer(app)
 const io = require('socket.io').listen(server)
 
-server.listen(process.env.PORT || 8080)
+server.listen(PORT, () => {
+	console.log("Listenting on port " + PORT)
+})
 
 //Setting up webpage rendering
 app.set('view engine','ejs')
