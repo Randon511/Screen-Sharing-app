@@ -1,1 +1,1 @@
-worker: node ./public/bundle.js
+worker: node ./public/server.js
