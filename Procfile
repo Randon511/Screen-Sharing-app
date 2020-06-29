@@ -1,1 +1,1 @@
-worker: node ./public/server.js
+worker: node ./server.js
