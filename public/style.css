@@ -89,14 +89,14 @@ Rooms page styles
     align-items: center;
     flex-direction: column;
     overflow-y: auto;
-    width: 100%;
+    width: 80%;
     height: 90%;
 }
 
 .rooms{
     position: relative;
     display: flex;
-    width: 70%;
+    width: 90%;
     height: 15%;
     background-color: #202020;
     border: solid white;
