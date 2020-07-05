@@ -48,21 +48,55 @@ Landing page styles
 /*
 Rooms page styles
 */
-#rooms-page{
+#page{
+    background-image: url(https://1.bp.blogspot.com/-neXdPhQYzDg/XQLIPdV-GSI/AAAAAAABHS8/Fa8k8lzp1IgXr5Xd6A_2YApmWcOmHyDkwCLcBGAs/s1600/Rain.gif);
+}
+#banner{
     position: absolute;
-    background-color: gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 15%;
+    top: 0%;
+    left: 0%;
+    font-size: 48px;
+    font-family: "Lucida Bright", Georgia, serif;
+    box-sizing: border-box;
+    border-bottom: 5px solid;
+    border-color: black;
+}
+
+#banner-text{
+    color: #3FCFE5;
+}
+
+#rooms-box{
+    position: absolute;
     display: flex;
     align-items: center;
     flex-direction: column;
-    overflow-y: scroll;
+    justify-content: space-evenly;
     width: 100%;
-    height: 100%;
+    height: 85%;
+    top: 10%;
+    left:0%
+}
+
+#rooms-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: 90%;
 }
 
 .rooms{
     position: relative;
     display: flex;
-    width: 60%;
+    width: 70%;
     height: 15%;
     background-color: #202020;
     border: solid white;
@@ -100,10 +134,7 @@ Rooms page styles
 #create-room-button{
     color: black;
     background-color: darkgray;
-    border-color: transparent;
-    outline: solid;
-    outline-offset: -2px;
-    outline-width: 2px;
+    border: none;
 }
 
 
@@ -162,7 +193,6 @@ Screen share page styles
     height: 91%;
     top:4%;
     right: 0%;
-    
     overflow-y: scroll;
     display: flex;
     flex-direction: column;

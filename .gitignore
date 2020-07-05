@@ -11,3 +11,4 @@ Debug/
 *.html
 node_modules/
 *.json
+*bundle.js

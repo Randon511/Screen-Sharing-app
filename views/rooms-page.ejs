@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id = "page">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -8,10 +8,20 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Screen Share</title>
 </head>
-<body id = "rooms-page">
-    <button title="Create new room" type="submit" id="create-room-button"><i class="material-icons">add_box</i></button>
-    <script src="socket.io/socket.io.js"></script>
-    <script src="rooms-page-bundle.js"></script>
+<body>
+	<div id = "rooms-page">
+		<div id = "banner">
+			<span id = "banner-text">Screen Share</span>
+		</div>
+		<div id = "rooms-box">
+			<div id = "rooms-container">
+				<span id = "rooms-page-text">Rooms</span>
+			</div>
+			<button title="Create new room" type="submit" id="create-room-button"><i class="material-icons">add_box</i></button>
+		</div>
+	</div>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="rooms-page-bundle.js"></script>
 </body>
 </html>
  

@@ -1,10 +1,9 @@
 const socket = io()
 const $ = require('jquery')
 
-var roomContainer = document.getElementById('rooms-page')
+var roomsContainer = document.getElementById('rooms-container')
 var createRoomButton = document.getElementById('create-room-button')
 var roomList = []
-var username = ""
 
 socket.emit("room-query")
 socket.on("room-list", rooms => {
@@ -49,7 +48,7 @@ function createRoom(roomName){
     btn.addEventListener('click', joinRoom)
 
     room.appendChild(btn)
-    createRoomButton.before(room)
+    roomsContainer.append(room)
 }
 
 function updateUsers(room){
