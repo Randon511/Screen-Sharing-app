@@ -1,3 +1,115 @@
+/*
+Landing page styles
+*/
+#login-page{
+    background-color: gray; 
+}
+
+#login-box{
+    position: absolute;
+    background-color: #404040;
+    display: flex;
+    align-items: center;
+    left: 42%;
+    top: 30%;
+    width: 16%;
+    height: 20%;
+    border-radius: 3%;
+}
+
+#login-forms{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-element.input{
+    width: 80%;
+}
+
+#login-buttons{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 5%;
+    width: 40%;
+    height: 20%;
+}
+
+.login-element{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+/*
+Rooms page styles
+*/
+#rooms-page{
+    position: absolute;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
+
+.rooms{
+    position: relative;
+    display: flex;
+    width: 60%;
+    height: 15%;
+    background-color: #202020;
+    border: solid white;
+    border-radius: 10px;
+    margin: 1%;
+    padding: 1%;
+    color: white;
+    font-family: Arial;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.room-users{
+    position: relative;
+    color: #3FCFE5;
+    font-size: 16px;
+    width: 10%;
+    height: 20%;
+    left: 2%;
+}
+
+#join-room-button{
+    position: absolute;
+    color: #3FCFE5;
+    background-color: transparent;
+    outline: solid;
+    outline-offset: -3px;
+    outline-width: 2px;
+    height: 80%;
+    width: 40px;
+    top: 10%;
+    right: 10px;
+}
+
+#create-room-button{
+    color: black;
+    background-color: darkgray;
+    border-color: transparent;
+    outline: solid;
+    outline-offset: -2px;
+    outline-width: 2px;
+}
+
+
+/*
+Screen share page styles
+*/
 .viewer{
     position: absolute;
     height: 100%;

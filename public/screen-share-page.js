@@ -1,8 +1,9 @@
-const socket = io()
 var Peer = require('simple-peer')
+const socket = io()
 var videoStream = null
 var streamHost = false; 
 
+//Vars for the share screen page
 var messageContainer = document.getElementById('message-container')
 var messageForm = document.getElementById('send-container')
 var messageInput = document.getElementById('message-input')
@@ -10,21 +11,27 @@ var shareButton = document.getElementById('start-sharing-button')
 var stopButton = document.getElementById('stop-button')
 var video = document.getElementById('video')
 var numberOfUsers = document.getElementById('number-of-users')
+
 //keeps a reference of every peer and its socket id {peerId, peer}
 peersRef = []
 //Get user to enter their name and add them to the user list
-var name = ""
+var roomName = ""
+var userName = ""
 
-while(name == ""){
-	name = prompt("Enter your name")
+userName = prompt("Enter your name")
+while(userName == ""){
+    userName = prompt("Please enter a name")
 }
 
+socket.emit("join-room", userName)
 
-socket.emit('new-user', {name: name})
+socket.on("room-name", name => {
+	roomName = name
+	socket.emit("new-user", roomName)
+})
 
-//A new user has joined the room so we neer to make peer connections with all other users
+//A new user has joined the room so we neer to make peer connections with all other users in the room
 socket.on('all-users', users => {
-	console.log("all-users")
 	if(users.length != 0){
 		users.forEach(user => {
 			const peer = createPeer(user[1].socketId, socket.id)
@@ -38,10 +45,9 @@ socket.on('all-users', users => {
 })
 
 socket.on('user-joined-room', user => {
-	console.log("user-joined")
-	const peer = createPeer(user.socketId, socket.id)
+	const peer = createPeer(user, socket.id)
 	peersRef.push({
-		peerId: user.socketId,
+		peerId: user,
 		peer
 	})
 	setNumberOfUsers()
@@ -68,21 +74,21 @@ socket.on("recieving-returned-signal", payload => {
 	item.peer.signal(payload.signal)
 })
 
-socket.on("chat-message", data => {
-	appendMessage(`${data.message}`,`${data.name}`)
+socket.on("chat-message", payload => {
+	appendMessage(`${payload.message}`,`${payload.sender}`)
 })
 
-////////////////////////////////////////////////////////////////////////////////////////
-//listens for when the user clicks the submit button
+///////////////////////////////////////////
+/*Event listeners                        */
+///////////////////////////////////////////
 messageForm.addEventListener('submit', e=> {
 	//Prevents page from refreshing when we click send
 	e.preventDefault()
-	const message = messageInput.value
 	//Sends the message typed in the input form to the server
-	if(message != "")
+	if(messageInput.value != "")
 	{
-		socket.emit('send-chat-message', message)
-		messageInput.value = ''
+		socket.emit('send-chat-message', {message: messageInput.value, roomname: roomName, sender: userName})
+		messageInput.value = ""
 	}
 })
 
@@ -98,7 +104,10 @@ stopButton.addEventListener('click', e=> {
 	e.preventDefault()
 	stopStreaming()
 })
-////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////
+/**************Functions******************/
+///////////////////////////////////////////
 function createPeer(userToSignal, callerId){
 	const peer = new Peer({
 		initiator: true
@@ -163,7 +172,7 @@ function appendMessage(message,sender){
 	const messageAuthor = document.createElement('div')
 	messageAuthor.classList.add('messageAuthor')
 	
-	if(sender == name){
+	if(sender == userName){
 		messageElement.classList.add('myMessage')
 	}
 	else{
@@ -188,7 +197,16 @@ async function getVideoStream() {
 			//Cursor only visible when moved
 			cursor:"motion"
 		},
-		audio: true
+		audio:{
+			autoGainControl: false,
+    		channelCount: 2,
+    		echoCancellation: false,
+   	 		latency: 0,
+    		noiseSuppression: false,
+    		sampleRate: 48000,
+    		sampleSize: 16,
+			volume: 1.0
+		}
 	}
 
 	try {
@@ -203,7 +221,8 @@ async function getVideoStream() {
 	toggleStopButton()
 }
 
-function streamVideo(){	 
+function streamVideo(){	
+	console.log(peersRef)
 	if (peersRef.length != 0){
 		peersRef.forEach(user => {
 			user.peer.addStream(videoStream)
