@@ -1,0 +1,44 @@
+#login-page{
+    background-color: gray; 
+}
+
+#login-box{
+    position: absolute;
+    background-color: #404040;
+    display: flex;
+    align-items: center;
+    left: 42%;
+    top: 30%;
+    width: 16%;
+    height: 20%;
+    border-radius: 3%;
+}
+
+#login-forms{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login-element.input{
+    width: 80%;
+}
+
+#login-buttons{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 5%;
+    width: 40%;
+    height: 20%;
+}
+
+.login-element{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
